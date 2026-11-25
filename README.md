@@ -4,8 +4,8 @@ HybridGRU_RoPE_W64 - Long family, decoder-only byte-level language model, standa
 
 ## Status
 
-- Verification level: **Smoke-Tested**
-- Failure class: Experiment Incomplete: benchmarks not finished
+- Verification level: **Benchmarked**
+- Failure class: Note: window 64 gives length-general state tracking (0.76-0.78 short, 0.89-0.92 long at 8192)
 
 ## Provenance
 
@@ -23,6 +23,7 @@ All models share one protocol: 256-byte vocabulary, dim 512, 6 layers, 8 heads x
 - Parameters: 20.74 M
 - Causality check: pass (largest change of earlier outputs 0.0e+00)
 - Overfit check (4 x 256 bytes): 5.689 -> 0.001 nats, pass
+- LM-02 enwik8 (200M tokens): valid 1.488 / test 1.488 bits per byte
 - LM-05 recall `lm05v3`: 4 pairs @ 512: 0.01 (keys removed 0.02); 4 pairs @ 2048: 0.01 (keys removed 0.02); 16 pairs @ 512: 0.02 (keys removed 0.01); 16 pairs @ 2048: 0.02 (keys removed 0.02)
 - LM-06 memory update `lm06`: @512: latest 0.32, unchanged 0.02, stale 0.01; @2048: latest 0.03, unchanged 0.02, stale 0.01
 
